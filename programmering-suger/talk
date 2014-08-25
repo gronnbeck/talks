@@ -1,0 +1,168 @@
+Programmering Suger
+---
+
+# Hvem er jeg?
+Hei, for de som ikke kjenner meg er jeg Ken. Har jobbet litt over ett år og har
+sittet meste parten av tiden min i forvaltning. Dvs jeg har skrevet litt kode
+og rantet minst like mye.
+
+# Hva skal jeg snakke om?
+Jeg skal snakke om hvorfor programmering suger. Slapp av. Ingen vits å hisse
+seg opp enda, jeg kommer forhåpentligvis frem til et poeng etterhvert.
+
+BRO DOWN: https://38.media.tumblr.com/tumblr_me24pfIwGt1qf2dg2o4_250.gif
+
+# Hva er programmering
+Okok. La oss begynne her. Så "Hva er programmering" eller "hva gjør en
+programmerer". Ok. Hvis dere skulle forklart hva programmering er og hvordan
+en typisk dag ser ut for en utvikler. Hvor mange ville kommet med en
+forklaring som ligner på denne definisjonen?
+
+
+"   [Programming] is clumping things together
+    with half-dried glue and praying that it holds water
+    long enough to replace it with a new clump of things.   "
+
+
+Så hvor ønsker vi å være. Jeg skulle ønske jeg kunne si, og det er sikkert
+noen her inne som helt sikkert sier det, at
+
+
+"   Programmering er å løse problemer     "
+
+
+eller at vi er problemløsere. Vi utviklere bruker mye tid på ting som ikke
+skaper verdi. Rett og slett fordi utviklermiljøene generelt sett er fremmed
+fientlige. De liker ikke mennesker og hvertfall ikke utviklere.
+
+# Løsningen
+Så nå tenker dere helt sikkert at jeg kommer med løsningen. "The Holy Grail".
+Men det har jeg ikke. Rakk rett og slett ikke komme så langt. Jeg skal heller
+rante om hva som suger med programmering. Det innebærer Sette opp prosjekt,
+skrive kode og deploye.
+
+# Oppsett, Skriving, Deploy
+
+Debugging er alltid vanskelig.
+
+## Oppsett
+
+Oppsett av et nytt prosjekt er alltid et mareritt. Til og med å sette opp
+mitt eget prosjekt på en ny datamaskin er noe dritt. Det er ingen som liker å
+bruke store deler av uken sin på å sette opp avhengigheter og få, ja maven,
+bruker ikke jeg maven til daglig, til å finne riktige avhengigheter. Og når du
+prøver å kjøre pakkehåndteringen din får du
+
+
+"   Could not resolve dependency for ..... "
+
+
+og du sitter der med sjegget i postkassa. Til du google forteller deg du
+har glemt å legge til "de andre repoen", og føler deg som en idiot i ettertid.
+
+IT WORKS ON MY MACHINE: http://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png
+
+## Skriving
+
+Å skrive kode er, som Chris Granger sier, indirekte og ikke mulig å observere.
+Programmering er en er rett og slett en oversettelsesprosess der man gjør mange feil.
+Selv matte. La oss ta dette eksempelet.
+
+"   Standardavvik i C   "
+
+Kan noen umiddelbart se hva dette er? Hva med dette?
+
+"   Standardavvik i notasjon  "
+
+Eller når dette
+
+"  Kort[0][12]  "
+
+Ah! Jeg elsker når jeg får utdelt kort[0][12]. Som egentlig bare er Spar Ess og
+kan enkelt representeres slik.
+
+Ja, jeg dere sitter nok der å tenker at dette kan fikses med litt bedre kode.
+Slenge inn litt enums, gjøre hardkodede verdier til variabler osv. Men selv når
+vi vet alt dette så klarer vi gang på gang å produsere kode som "kort[0][12]".
+Dette gjelder både erfarne, uerfarne programmere og jeg skriver MYE sånn kode.
+Ikke fordi man er en dårlig programmerer, men fordi vi "hadde dårlig tid"
+eller fordi vi rett og slett glemmer å tenke over at andre skal lese det.
+
+Så? Hvordan løser vi dette? En fremgangsmåte er tettere feedback-loop. Tenk
+dere en idé som kan visualisere data for deg mens du programmerer.
+
+
+"   Språk er egnet til å formidle mening, ikke for å vise frem data "
+
+
+Ok. Skal jeg snakke om Excel. Farlig. Excel er et godt eksempel på et slik
+verktøy. Du kan observere variablene og visualisere resultatet mens du
+endrer på input.
+
+Tenk dere et excel der du må endre på en input-tabell, kompilere,
+kjøre programmet og lese output-tabellen fra en konsoll.
+Det er det vi utviklere jobber med.
+
+Så et av problemene våre er verktøy. Et annet er feilmeldinger.
+
+## Feilmeldinger
+
+NullReferenceException. Dette sier meg ingenting. What the hell?
+
+
+"   Object reference not set to an instance of an object  "
+
+
+Takk for at du prøvde. Hvorfor er det ingen informasjon til hvorfor det gikk
+galt. Vi vet hva som gikk galt vi fikk "NullReferenceException" slengt rett
+i ansiktet. Men hva med dataene? Hva var null? Hvilken verdi kunne den hatt?
+Hva forventet vi egentlig?
+
+Så hva skjedde. La oss se... ticket var null. Ganske enkelt feil i dette
+tilfelle. Selv i statisk typede språk som C# klarer de ikke å gi oss noe data
+etter en kræsj.
+
+Og holde orden i data-drevene applikasjoner. Der vi skal validere, filtrere,
+manipulere og returnere ukjente data kommer vi ikke unna å gjøre mange
+slike feil. Og vi ender opp med å lete etter "hva som egentlig gikk galt
+når vi fikk denne feilen".
+
+Det er en gjennomgående feil og fører til mye frustrasjon. Selv om akkurat
+dette eksempelet var en feil i språket, er vi utviklere også skylding som
+lager APIer med minst like dårlige feilmeldinger.
+
+LightTable er en eksperimentell IDE som har løst dette på en bedre måte enn
+andre IDEer. Å vise exceptionen under kodelinjen der feilen skjedde.
+Dette er ikke en løsning på problemet, men er steg i riktig retning.
+
+http://www.lighttable.com/images/040/pyinline.png
+
+
+## Deploy
+
+La oss snakke om deploy. For det første er det å deploye noe utrolig mye
+vanskeligere enn det man skulle tro. SSH inn der, last ned koden der, kjør den
+her, RDP der, start databasen der... Og RDP inn der.
+
+RDP while you RDP: http://cdn.memegenerator.net/instances/500x/48547056.jpg
+
+Det er også så sykt mange forskjellige måter å deploye apps på, og så mange
+ting som må være installert for at det skal fungere. Noe av tingene er satt opp
+fordi det er nyttig og hjelper programene våre skalere. Mens andre ting er satt
+der... fordi arkitektur...
+
+Disse tingene er i veien. Og man ender opp å bruke flere dager på å sette
+opp ting. Noe man kunne brukt på å skape verdi. Akkurat her er synes jeg
+kombinasjonen av microservices og platformer som heroku kan gi deg mye.
+Men at man fortsatt må kunne sette opp egne løsninger hvis platformen begrenser
+verdiskapning.
+
+For det tredje så er det ikke sjeldent at ting bare kræsjer i prod. Selv etter
+at det har vært innom test og staging. Miljøene er AKKURAT forskjellige nok til
+at det går rett til helvete. Dataene i DB er litt anderledes så querier timer ut.
+Staging er ikke under samme stress som en prod-server kan være så ting kræsjer
+under de ikke skal.
+
+Mitt ønske for å løse dette er å kunne debugge rett i en prod-node utviklerne
+kun har tilgang til. Og hvor deilig hadde det ikke vært hvis man kunne attache
+debuggeren. 
