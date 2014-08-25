@@ -200,13 +200,18 @@ double standard_dev( Iterator begin , Iterator end ) {
 
 </pre>
 					<aside class="notes">
+							Runtimes default to exiting on uncaught exceptions,
+							throwing away all the context that would be useful for
+							solving the problem and forcing the user to try to
+							recreate the crashing state.<br>
+							<br>
 							All mainstream languages, regardless of paradigm, encourage
 							<em>anonymous local</em> state which can't be easily
 							observed and modified.<br>
-
-							IDEer som f.eks. NetLight lar deg observere og se på
+							<br>
+							IDEer som f.eks. LightTable lar deg observere og se på
 							verdier som endrer seg.
-
+							<br><br><br>
 							while searching for a function that can recover,
 							<strong>the stack unwinds</strong>
 					</aside>
@@ -236,6 +241,18 @@ double standard_dev( Iterator begin , Iterator end ) {
 						problem but manually walking backwards along the chain of causes
 						by setting up isolated test cases and repeatedly rerunning them
 						under the debugger.
+					</p>
+				</section>
+
+				<section>
+					<h3>Debug by querying</h3>
+					<p>
+						BOOM analytics deals with this by reflecting all data,
+						from error logs and persistent data to message queues
+						and profiling data, into relational tables that are
+						made available to overlog - the same distributed query
+						language that runs the rest of the system.
+						This means you can directly run queries over the causality graph
 					</p>
 				</section>
 
