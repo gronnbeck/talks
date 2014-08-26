@@ -84,6 +84,7 @@ kan enkelt representeres slik.
 Ja, jeg dere sitter nok der å tenker at dette kan fikses med litt bedre kode.
 Slenge inn litt enums, gjøre hardkodede verdier til variabler osv. Men selv når
 vi vet alt dette så klarer vi gang på gang å produsere kode som "kort[0][12]".
+
 Dette gjelder både erfarne, uerfarne programmere og jeg skriver MYE sånn kode.
 Ikke fordi man er en dårlig programmerer, men fordi vi "hadde dårlig tid"
 eller fordi vi rett og slett glemmer å tenke over at andre skal lese det.
@@ -91,17 +92,7 @@ eller fordi vi rett og slett glemmer å tenke over at andre skal lese det.
 Så? Hvordan løser vi dette? En fremgangsmåte er tettere feedback-loop. Tenk
 dere en idé som kan visualisere data for deg mens du programmerer.
 
-
 "   Språk er egnet til å formidle mening, ikke for å vise frem data "
-
-
-Ok. Skal jeg snakke om Excel. Farlig. Excel er et godt eksempel på et slik
-verktøy. Du kan observere variablene og visualisere resultatet mens du
-endrer på input.
-
-Tenk dere et excel der du må endre på en input-tabell, kompilere,
-kjøre programmet og lese output-tabellen fra en konsoll.
-Det er det vi utviklere jobber med.
 
 Så et av problemene våre er verktøy. Et annet er feilmeldinger.
 
@@ -165,4 +156,17 @@ under de ikke skal.
 
 Mitt ønske for å løse dette er å kunne debugge rett i en prod-node utviklerne
 kun har tilgang til. Og hvor deilig hadde det ikke vært hvis man kunne attache
-debuggeren. 
+debuggeren.
+
+
+
+
+# Did not make the cut
+
+Ok. Skal jeg snakke om Excel. Farlig. Excel er et godt eksempel på et slik
+verktøy. Du kan observere variablene og visualisere resultatet mens du
+endrer på input.
+
+Tenk dere et excel der du må endre på en input-tabell, kompilere,
+kjøre programmet og lese output-tabellen fra en konsoll.
+Det er det vi utviklere jobber med.

@@ -29,6 +29,11 @@
 			}
 		</script>
 
+		<style>
+			img {
+				border: none !important;
+			}
+		</style>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -41,208 +46,194 @@
 			<div class="slides">
 				<section>
 					<h1>Programmering Suger</h1>
+					<p>@gronnbeck</p>
+					<aside class="notes">
+						<ul>
+							<li>Om meg</li>
+							<li>Hva skal jeg snakke om</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
-					<h2>Så hva er programmering?</h2>
+					<img src="https://38.media.tumblr.com/tumblr_me24pfIwGt1qf2dg2o4_250.gif" alt="" />
+				</section>
+
+				<section>
+					<p><strong>Så hva er programmering?</strong></p>
 				</section>
 
 				<section>
 					<p>
-						I found out that it's just clumping things together
-						with half-dried glue and praying that it holds water
-						long enough to replace it with a new clump of things.
+						"   [Programming] is <strong>clumping things together
+								with half-dried glue and praying that it holds water
+								long enough</strong> to replace it with a new clump of things.   "
 					</p>
 				</section>
 
 				<section>
-					<h4>
-						Løse problemer
-					</h4>
+					<p>
+						Programmering er å <strong>løse problemer</strong>
+					</p>
+				</section>
+
+				<section>
+					<p>Oppsett, Skriving, og Deploy</p>
+				</section>
+
+				<section>
+					Debugging
 				</section>
 
 				<section>
 					<h2>Oppsett</h2>
-					<h3>Avhengigheter</h3>
-					<h4>Config</h4>
-					<h4>Pakkehåndtering</h4>
+					<img
+					src="http://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png">
 				</section>
 
 				<section>
 					<h2>Skrive kode</h2>
-					<p>Imagine a spreadsheet where every time you change something
-						you must open a terminal, run the compiler and scan
-						through the cell / value pairs in the printout to see
-						the effects of your change.</p>
-				</section>
-
-
-				<section>
-					<h2>It compiles. Lets run it!</h2>
 				</section>
 
 				<section>
-					<h4>Mer config</h4>
-					<h4>Mer ting som må installeres</h4>
-					<h5>Software som webservere</h5>
-				</section>
-
-
-				<section>
-					<h3>Ok! Det kjører lokalt. DEPLOY!</h3>
-					<p>Dataene er ikke alltid på samme format</p>
-
-					<p>Mengden av Prod data er alltid større. Dette kan føre til
-					at sider kræsjer i prod fordi metoder bruker for lang tid.</p>
-
-					<p>The important point is that there are sensible defaults for
-						deployment and that it is 'batteries included' in
-						the language or IDE</p>
-				</section>
-
-				<section>
-					<h2>Programmering er indirekte</h2>
-				</section>
-
-				<section>
-					$sd = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x}^2)}$
-				</section>
-
-				<section>
-<pre><code class="cpp">#include &lt;algorithm&gt;
-#include &lt;iostream&gt;
-#include &lt;iterator&gt;
-#include &lt;cmath&gt;
-#include &lt;vector&gt;
-#include &lt;iterator&gt;
-#include &lt;numeric&gt;
-
-template &lt;typename Iterator&gt;
+<pre><code class="cpp">template &lt;typename Iterator&gt;
 double standard_dev( Iterator begin , Iterator end ) {
-   double mean = std::accumulate( begin , end , 0 ) / std::distance( begin , end ) ;
-   std::vector&lt;double&gt; squares ;
-   for( Iterator vdi = begin ; vdi != end ; vdi++ )
-      squares.push_back( std::pow( *vdi - mean , 2 ) ) ;
-   return std::sqrt( std::accumulate( squares.begin( ) , squares.end( ) , 0 ) / squares.size( ) ) ;
+  double mean =
+    std::accumulate( begin , end , 0 ) / std::distance( begin , end ) ;
+
+  std::vector&lt;double&gt; squares ;
+
+  for( Iterator vdi = begin ; vdi != end ; vdi++ )
+    squares.push_back( std::pow( *vdi - mean , 2 ) ) ;
+
+  return std::sqrt( std::accumulate( squares.begin( ) ,
+    squares.end( ) , 0 ) / squares.size( ) ) ;
 }</code></pre>
-</section>
-<section>
-<pre><code class="cpp">int main( ) {
-	double demoset[] = { 2 , 4 , 4 , 4 , 5 , 5 , 7 , 9 } ;
-	int demosize = sizeof demoset / sizeof *demoset ;
-	std::cout &lt;&lt; "The standard deviation of\n" ;
-	std::copy( demoset , demoset + demosize , std::ostream_iterator&lt;double&gt;( std::cout, " " ) ) ;
-	std::cout &lt;&lt; "\nis " &lt;&lt; standard_dev( demoset , demoset + demosize ) &lt;&lt; " !\n" ;
-	return 0 ;
-}</code></pre>
-				</section>
+			</section>
 
-				<section>
-					<h3>cards[0][12]</h3>
+			<section>
+				$sd = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x}^2)}$
+			</section>
 
-					<aside class="notes">
-						Jeg elsker når jeg får utdelt cards[0][12]! <br>
-					</aside>
-				</section>
+			<section>
+				<p>cards[0][12]</p>
 
-				<section>
-					<img src="img/ace-of-spades.png"/>
+				<aside class="notes">
+					Jeg elsker når jeg får utdelt cards[0][12]! <br>
+				</aside>
+			</section>
 
-					<aside class="notes">
-						Så hva har skjedd feil her?<br>
+			<section>
+				<img src="img/ace-of-spades.png" width="30%"/>
 
-						A vast number of programming errors are simple translation problems.
-						We had the solution in our head, but in trying to turn it into code
-						we just forgot something or translated it very slightly wrong.
-					</aside>
-				</section>
+				<aside class="notes">
+					Så hva har skjedd feil her?<br>
 
+					A vast number of programming errors are simple translation problems.
+					We had the solution in our head, but in trying to turn it into code
+					we just forgot something or translated it very slightly wrong.
+				</aside>
+			</section>
 
-				<section>
-					<h2>Programmering er usynlig</h2>
+			<section>
+				<p>Tettere Feedback-loop og visualisering</p>
+			</section>
 
-					<aside class="notes">
-						We can't see how our programs execute. <br>
-						We can't see how our changes affect our programs.<br>
-						<br>
-						The state of the art in observability is a stepwise debugger,
-						which forces us to stop the world and look at a single instant in time.
-						But the truth is that few errors occur in an instant;
-						most are found only by observing the passage of time.
-					</aside>
-				</section>
+			<section>
+				<h3>Feilmeldinger</h3>
+			</section>
 
-				<section>
-					<h3>Feilmeldinger</h3>
-				</section>
-
-
-
-				<section>
-<pre><code class="csharp"> public string GetTicketId(Ticket ticket) {
-	if (ticket.Id != null) {
-		return ticket.Id;
-	}
-	throw new IllegalTicketException();
+			<section>
+<pre><code class="csharp">public string GetTicketId(Ticket ticket) {
+  if (ticket.Id != null) {
+    return ticket.Id;
+  }
+  throw new IllegalTicketException();
 }
 
 </code></pre>
-			</section>
+	</section>
 
-				<section>
+		<section>
 <pre>
 
- System.NullReferenceException:
-    Object reference not set to an instance of an object
+System.NullReferenceException:
+Object reference not set to an instance of an object
 
- at FailTest.MainClass.Main (System.String[] args)
-    [0x00005] in /Users/gronnbeck/Projects/FailTest/FailTest/Program.cs:12
+at FailTest.MainClass.Main (System.String[] args)
+[0x00005] in /Users/gronnbeck/Projects/FailTest/FailTest/Program.cs:12
 
 </pre>
-					<aside class="notes">
-							Runtimes default to exiting on uncaught exceptions,
-							throwing away all the context that would be useful for
-							solving the problem and forcing the user to try to
-							recreate the crashing state.<br>
-							<br>
-							All mainstream languages, regardless of paradigm, encourage
-							<em>anonymous local</em> state which can't be easily
-							observed and modified.<br>
-							<br>
-							IDEer som f.eks. LightTable lar deg observere og se på
-							verdier som endrer seg.
-							<br><br><br>
-							while searching for a function that can recover,
-							<strong>the stack unwinds</strong>
-					</aside>
+			<aside class="notes">
+					IDEer som f.eks. LightTable lar deg observere og se på
+					verdier som endrer seg.
+			</aside>
 
-				</section>
+		</section>
 
-				<section>
-					<h4>'cannot call method undefined of undefined'</h4>
-					<p>
-						Do you really want to spend lots of time with the kind of person
-						who just repeatedly shouts 'cannot call method undefined of undefined!'
-					</p>
-				</section>
+		<section>
+			<p>'cannot call method undefined of undefined'</p>
+		</section>
 
 
-				<section>
-					<h3>Reproducing and tracing bugs</h3>
-					<p>
-						Reproducing bugs is easier when you can just snapshot
-						your history and mail it to the developer.
-					</p>
+		<section>
+			Debug-mode is the only-mode
+			<img src="http://www.lighttable.com/images/040/pyinline.png"/>
+		</section>
 
-					<p>
-						These questions typically involve reasoning backwards from effect
-						to cause whereas debuggers walk you forward from cause to effect.
-						The result is that debugging consists mostly not of finding the
-						problem but manually walking backwards along the chain of causes
-						by setting up isolated test cases and repeatedly rerunning them
-						under the debugger.
-					</p>
-				</section>
+
+
+		<section>
+			<h2>Deploy</h2>
+		</section>
+
+		<section>
+			<p>Alt for mange måter å deploye på</p>
+		</section>
+
+		<section>
+			<img src="http://cdn.memegenerator.net/instances/500x/48547056.jpg"/>
+		</section>
+
+		<section>
+			<p>Microservices og PaaS</p>
+			<aside class="notes">
+				<p>The important point is that there are sensible defaults for
+					deployment and that it is 'batteries included' in
+					the language or IDE</p>
+			</aside>
+		</section>
+
+		<section>
+			Deploy...
+
+			<aside class="notes">
+				<p>Mengden av Prod data er alltid større. Dette kan føre til
+				at sider kræsjer i prod fordi metoder bruker for lang tid.</p>
+			</aside>
+		</section>
+
+		<section>
+			<img src="http://www.gemind.com.br/wp-content/uploads/2011/12/500-http-status-cat.jpg">
+		</section>
+
+
+			<section>
+				<h3>Reproducing and tracing bugs</h3>
+				<p>
+					Reproducing bugs is easier when you can just snapshot
+					your history and mail it to the developer.
+				</p>
+
+				<p>
+					These questions typically involve reasoning backwards from effect
+					to cause whereas debuggers walk you forward from cause to effect.
+					The result is that debugging consists mostly not of finding the
+					problem but manually walking backwards along the chain of causes
+					by setting up isolated test cases and repeatedly rerunning them
+					under the debugger.
+				</p>
+			</section>
 
 				<section>
 					<h3>Debug by querying</h3>
