@@ -1,25 +1,22 @@
 Programmering Suger
-----
+---
 
-Draft 2.
+Draft 1.
 
 # Hvem er jeg?
 Hei, for de som ikke kjenner meg er jeg Ken. Har jobbet litt over ett år og har
-sittet meste parten av tiden min i forvaltning. Dvs jeg koder litt, rantet litt
- og spiller foosball.
+sittet meste parten av tiden min i forvaltning. Dvs jeg har skrevet litt kode
+og rantet minst like mye.
 
 # Hva skal jeg snakke om?
-Jeg skal snakke om hvorfor programmering suger.
+Jeg skal snakke om hvorfor programmering suger. Slapp av. Ingen vits å hisse
+seg opp enda, jeg kommer forhåpentligvis frem til et poeng etterhvert.
 
-(Skifte slide)
-
-Ingen vits å hisse seg opp, bro, enda, jeg kommer forhåpentligvis
-frem til et poeng etterhvert.
-
+BRO DOWN: https://38.media.tumblr.com/tumblr_me24pfIwGt1qf2dg2o4_250.gif
 
 # Hva er programmering
 Okok. La oss begynne her. Så "Hva er programmering" eller "hva gjør en
-programmerer". Hvis dere skulle forklart hva programmering er og hvordan
+programmerer". Ok. Hvis dere skulle forklart hva programmering er og hvordan
 en typisk dag ser ut for en utvikler. Hvor mange ville kommet med en
 forklaring som ligner på denne definisjonen?
 
@@ -36,39 +33,36 @@ noen her inne som helt sikkert sier det, at
 "   Programmering er å løse problemer     "
 
 
-eller at vi utviklere er problemløsere. Vi utviklere bruker mye tid på ting som ikke
-skaper verdi. Jeg mener det er rett og slett fordi utviklermiljøene generelt sett er fremmed
+eller at vi er problemløsere. Vi utviklere bruker mye tid på ting som ikke
+skaper verdi. Rett og slett fordi utviklermiljøene generelt sett er fremmed
 fientlige. De liker ikke mennesker og hvertfall ikke utviklere.
 
-Så jeg tenkte jeg skulle snakke om de tingene som jeg synes suger med programmering.
+# Løsningen
+Så nå tenker dere helt sikkert at jeg kommer med løsningen. "The Holy Grail".
+Men det har jeg ikke. Rakk rett og slett ikke komme så langt. Jeg skal heller
+rante om hva som suger med programmering. Det innebærer Sette opp prosjekt,
+skrive kode og deploye.
+
+# Oppsett, Skriving, Deploy
+
+Debugging er alltid vanskelig.
 
 ## Oppsett
 
 Oppsett av et nytt prosjekt er alltid et mareritt. Til og med å sette opp
-mitt eget prosjekt på en ny datamaskin er noe dritt. Man kan fort bruke store
-deler av arbeidsuken på å sette opp prosjektet. Og det er det ingen som liker.
-Alt fra config til pakker.
-
-Og ikke minst dokumentasjonen som forklarer oppsettet er aldri komplett.
-Så jeg kan lett konkludere med at alle techere i dette rommet har fortjent
-denne sertifiseringen.
-
-Config er noe dritt. Det er umulig å vite om du har configurert opp ting riktig.
-Så lenge det er riktig syntax så får du ingen feilmelding, men hvis du ikke har
-satt det opp helt korrekt funker ingenting. Og du skjønner ingenting.
-
-Pakker er noe dritt. For det første så
-er du avhengig av å ha et pakkehåndteringsverktøy, og det må være installert på
-rett måte. Hvis ikke går alt til helvete. Og når du endelig har fått satt det
-opp og prøver å kjøre pakkehåndteringen så får du
+mitt eget prosjekt på en ny datamaskin er noe dritt. Det er ingen som liker å
+bruke store deler av uken sin på å sette opp avhengigheter og få, ja maven,
+bruker ikke jeg maven til daglig, til å finne riktige avhengigheter. Og når du
+prøver å kjøre pakkehåndteringen din får du
 
 
 "   Could not resolve dependency for ..... "
 
 
-Så du googler etter løsningen, og som regel er løsningen grei. Så grei at du ikke
-helt skjønner hvorfor det magiske verktøyet ditt ikke kan ordne det.
+og du sitter der med sjegget i postkassa. Til du google forteller deg du
+har glemt å legge til "de andre repoen", og føler deg som en idiot i ettertid.
 
+IT WORKS ON MY MACHINE: http://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png
 
 ## Skriving
 
@@ -100,6 +94,8 @@ eller fordi vi rett og slett glemmer å tenke over at andre skal lese det.
 Så? Hvordan løser vi dette? En fremgangsmåte er tettere feedback-loop. Tenk
 dere en idé som kan visualisere data for deg mens du programmerer.
 
+"   Språk er egnet til å formidle mening, ikke for å vise frem data "
+
 Så et av problemene våre er verktøy. Et annet er feilmeldinger.
 
 ## Feilmeldinger
@@ -116,7 +112,13 @@ i ansiktet. Men hva med dataene? Hva var null? Hvilken verdi kunne den hatt?
 Hva forventet vi egentlig?
 
 Så hva skjedde. La oss se... ticket var null. Ganske enkelt feil i dette
-tilfelle.
+tilfelle. Selv i statisk typede språk som C# klarer de ikke å gi oss noe data
+etter en kræsj.
+
+Og holde orden i data-drevene applikasjoner. Der vi skal validere, filtrere,
+manipulere og returnere ukjente data kommer vi ikke unna å gjøre mange
+slike feil. Og vi ender opp med å lete etter "hva som egentlig gikk galt
+når vi fikk denne feilen".
 
 Det er en gjennomgående feil og fører til mye frustrasjon. Selv om akkurat
 dette eksempelet var en feil i språket, er vi utviklere også skylding som
@@ -126,20 +128,7 @@ LightTable er en eksperimentell IDE som har løst dette på en bedre måte enn
 andre IDEer. Å vise exceptionen under kodelinjen der feilen skjedde.
 Dette er ikke en løsning på problemet, men er steg i riktig retning.
 
-Ting bare kræsjer i prod. Selv etter
-at det har vært innom test og staging. Miljøene er AKKURAT forskjellige nok til
-at det går rett til helvete. Dataene i DB er litt anderledes så querier timer ut.
-Staging er ikke under samme stress som en prod-server kan være så ting kræsjer
-under de ikke skal.
-
-State of the art i dag er å logge masse, samle disse loggene, så prøve å
-gå backover fra der ting feilet og reprodusere feil. Det er noe dritt. Særlig
-siden loggene er skrevet av oss og mest sannsynligvis ikke inneholder de
-dataene vi trenger.
-
-Mitt ønske for å løse dette er å kunne debugge rett i en prod-node utviklerne
-kun har tilgang til. Og hvor deilig hadde det ikke vært hvis man kunne attache
-debuggeren.
+http://www.lighttable.com/images/040/pyinline.png
 
 
 ## Deploy
@@ -147,6 +136,8 @@ debuggeren.
 La oss snakke om deploy. For det første er det å deploye noe utrolig mye
 vanskeligere enn det man skulle tro. SSH inn der, last ned koden der, kjør den
 her, RDP der, start databasen der... Og RDP inn der.
+
+RDP while you RDP: http://cdn.memegenerator.net/instances/500x/48547056.jpg
 
 Det er også så sykt mange forskjellige måter å deploye apps på, og så mange
 ting som må være installert for at det skal fungere. Noe av tingene er satt opp
@@ -158,3 +149,26 @@ opp ting. Noe man kunne brukt på å skape verdi. Akkurat her er synes jeg
 kombinasjonen av microservices og platformer som heroku kan gi deg mye.
 Men at man fortsatt må kunne sette opp egne løsninger hvis platformen begrenser
 verdiskapning.
+
+For det tredje så er det ikke sjeldent at ting bare kræsjer i prod. Selv etter
+at det har vært innom test og staging. Miljøene er AKKURAT forskjellige nok til
+at det går rett til helvete. Dataene i DB er litt anderledes så querier timer ut.
+Staging er ikke under samme stress som en prod-server kan være så ting kræsjer
+under de ikke skal.
+
+Mitt ønske for å løse dette er å kunne debugge rett i en prod-node utviklerne
+kun har tilgang til. Og hvor deilig hadde det ikke vært hvis man kunne attache
+debuggeren.
+
+
+
+
+# Did not make the cut
+
+Ok. Skal jeg snakke om Excel. Farlig. Excel er et godt eksempel på et slik
+verktøy. Du kan observere variablene og visualisere resultatet mens du
+endrer på input.
+
+Tenk dere et excel der du må endre på en input-tabell, kompilere,
+kjøre programmet og lese output-tabellen fra en konsoll.
+Det er det vi utviklere jobber med.
