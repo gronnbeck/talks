@@ -89,9 +89,10 @@ Eller når dette
 Ah! Jeg elsker når jeg får utdelt kort[0][12]. Som egentlig bare er Spar Ess og
 kan enkelt representeres slik.
 
-Ja, jeg dere sitter nok der å tenker at dette kan fikses med litt bedre kode.
-Slenge inn litt enums, gjøre hardkodede verdier til variabler osv. Men selv når
+Ja, jeg dere sitter nok der å tenker at dette er bare dårlig gode og
+kan fikses med litt mer arbeid. Men selv når
 vi vet alt dette så klarer vi gang på gang å produsere kode som "kort[0][12]".
+For det dukker opp stadig vekk.
 
 Dette gjelder både erfarne, uerfarne programmere og jeg skriver MYE sånn kode.
 Ikke fordi man er en dårlig programmerer, men fordi vi "hadde dårlig tid"
@@ -115,14 +116,14 @@ galt. Vi vet hva som gikk galt vi fikk "NullReferenceException" slengt rett
 i ansiktet. Men hva med dataene? Hva var null? Hvilken verdi kunne den hatt?
 Hva forventet vi egentlig?
 
-Så hva skjedde. La oss se... ticket var null. Ganske enkelt feil i dette
+Så hva skjedde. La oss se... ticket var null. Ganske enkel feil i dette
 tilfelle.
 
 Det er en gjennomgående feil og fører til mye frustrasjon. Selv om akkurat
 dette eksempelet var en feil i språket, er vi utviklere også skylding som
 lager APIer med minst like dårlige feilmeldinger.
 
-LightTable er en eksperimentell IDE som har løst dette på en bedre måte enn
+Tilabek til LightTable som har løst dette på en bedre måte enn
 andre IDEer. Å vise exceptionen under kodelinjen der feilen skjedde.
 Dette er ikke en løsning på problemet, men er steg i riktig retning.
 
