@@ -58,25 +58,22 @@
 				</section>
 
 				<section>
+					<p><strong>Så hva er en programmerer?</strong></p>
+				</section>
+
+				<section>
+					<p>
+						En som...
+					</p>
+					<ul>
+						<li>løser problemer</li>
+						<li>skaper noe</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Brodown!</h1>
 					<img src="https://38.media.tumblr.com/tumblr_me24pfIwGt1qf2dg2o4_250.gif" alt="" />
-				</section>
-
-				<section>
-					<p><strong>Så hva er programmering?</strong></p>
-				</section>
-
-				<section>
-					<p>
-						"   [Programming] is <strong>clumping things together
-								with half-dried glue and praying that it holds water
-								long enough</strong> to replace it with a new clump of things.   "
-					</p>
-				</section>
-
-				<section>
-					<p>
-						Programmering er å <strong>løse problemer</strong>
-					</p>
 				</section>
 
 				<section>
@@ -85,31 +82,32 @@
 
 				<section>
 					<h2>Oppsett</h2>
-				</section>
-
-				<section>
 					<img
+					class="fragment"
+					data-fragment-index="1"
 					src="http://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png">
 				</section>
 
 				<section>
-					Config
+					<h2>Config</h2>
+					<img class="fragment" data-fragment-index="1" src="http://ljdchost.com/vtaJFMh.jpg" alt="" />
 				</section>
 
 				<section>
-					<img src="http://ljdchost.com/vtaJFMh.jpg" alt="" />
-				</section>
-
-				<section>
-					<p>Could not resolve dependency for ...</p>
-					<img src="http://ljdchost.com/jNYlqgE.gif" alt="" />
-					<aside class="notes">
-						<p>StackOv. søk: 6,919</p>
-					</aside>
+					<h2>Pakke håndtering</h2>
+					<img class="fragment" data-fragment-index="1" src="http://ljdchost.com/jNYlqgE.gif" alt="" />
 				</section>
 
 				<section>
 					<h2>Skrive kode</h2>
+				</section>
+
+				<section>
+					Programmerer på samme måte som i 1970
+				</section>
+
+				<section>
+					$sd = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x}^2)}$
 				</section>
 
 				<section>
@@ -128,9 +126,17 @@ double standard_dev( Iterator begin , Iterator end ) {
 }</code></pre>
 			</section>
 
-			<section>
-				$sd = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x}^2)}$
-			</section>
+		<section>
+			<img src="img/ace-of-spades.png" width="30%"/>
+
+			<aside class="notes">
+				Så hva har skjedd feil her?<br>
+
+				A vast number of programming errors are simple translation problems.
+				We had the solution in our head, but in trying to turn it into code
+				we just forgot something or translated it very slightly wrong.
+			</aside>
+		</section>
 
 			<section>
 				<p>cards[0][12]</p>
@@ -138,23 +144,6 @@ double standard_dev( Iterator begin , Iterator end ) {
 				<aside class="notes">
 					Jeg elsker når jeg får utdelt cards[0][12]! <br>
 				</aside>
-			</section>
-
-			<section>
-				<img src="img/ace-of-spades.png" width="30%"/>
-
-				<aside class="notes">
-					Så hva har skjedd feil her?<br>
-
-					A vast number of programming errors are simple translation problems.
-					We had the solution in our head, but in trying to turn it into code
-					we just forgot something or translated it very slightly wrong.
-				</aside>
-			</section>
-
-			<section>
-				<p>Tettere feedback-loop og visualisering</p>
-				<img src="http://www.chris-granger.com/images/050/watches.png" alt="" />
 			</section>
 
 			<section>
@@ -173,15 +162,11 @@ double standard_dev( Iterator begin , Iterator end ) {
 	</section>
 
 		<section>
-<pre>
-
-System.NullReferenceException:
+<pre><code>System.NullReferenceException:
 Object reference not set to an instance of an object
 
 at FailTest.MainClass.Main (System.String[] args)
-[0x00005] in /Users/gronnbeck/Projects/FailTest/FailTest/Program.cs:12
-
-</pre>
+[0x00005] in /Users/gronnbeck/Projects/FailTest/FailTest/Program.cs:12</code></pre>
 			<aside class="notes">
 					IDEer som f.eks. LightTable lar deg observere og se på
 					verdier som endrer seg.
@@ -189,7 +174,22 @@ at FailTest.MainClass.Main (System.String[] args)
 		</section>
 
 		<section>
+			Object reference not set to an instance of an object
+		</section>
+
+		<section>
 			<img src="http://emotibot.net/pix/205.jpg" alt="" />
+		</section>
+
+		<section>
+			Object reference not set to an instance of an object
+<pre class="fragment" data-fragment-index="1"><code class="csharp">public string GetTicketId(Ticket ticket) {
+  if (ticket.Id != null) {
+     return ticket.Id;
+  }
+  throw new IllegalTicketException();
+}</code></pre>
+<p class="fragment" data-fragment-index="2">"Ticket var null. Dette fikser du!"</p>
 		</section>
 
 		<section>
@@ -200,21 +200,14 @@ at FailTest.MainClass.Main (System.String[] args)
 			<img src="img/wat-duck-2.png" alt="" />
 		</section>
 
-
 		<section>
-			Debug-mode is the only-mode
-			<img src="http://www.lighttable.com/images/040/pyinline.png"/>
+			<p>'cannot call method undefined of undefined'</p>
 		</section>
 
 		<section>
 			<p>
-				I prod ...
+				Meanwhile in prod...
 			</p>
-
-			<aside class="notes">
-				<p>Mengden av Prod data er alltid større. Dette kan føre til
-				at sider kræsjer i prod fordi metoder bruker for lang tid.</p>
-			</aside>
 		</section>
 
 		<section>
@@ -224,10 +217,6 @@ at FailTest.MainClass.Main (System.String[] args)
 		<section>
 			<h2>State of the Art</h2>
 			<p>All the logs!</p>
-		</section>
-
-		<section>
-			<img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/370/110/588.jpg" alt="" />
 		</section>
 
 		<section>
@@ -243,22 +232,12 @@ at FailTest.MainClass.Main (System.String[] args)
 		</section>
 
 		<section>
-			<img src="img/rdp.png"/>
-		</section>
-
-		<section>
 			<img src="http://cdn.memegenerator.net/instances/500x/48547056.jpg"/>
 		</section>
 
 		<section>
-			<p>Microservices og PaaS</p>
-			<aside class="notes">
-				<p>The important point is that there are sensible defaults for
-					deployment and that it is 'batteries included' in
-					the language or IDE</p>
-			</aside>
+			<img src="img/rdp.png"/>
 		</section>
-
 
 		<section>
 			Takk for oppmerksomheten!
