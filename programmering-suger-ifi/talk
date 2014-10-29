@@ -1,0 +1,64 @@
+Programmering Suger
+----
+
+Draft 3. Rewrite
+
+* Introduksjon
+  - Hei jeg heter Ken, til daglig jobber jeg for BEKK, på kveldstid sitter jeg
+  hjemme å progger små websider.
+  - Klager vel mye og er generelt bitter
+* Hva er en programmerer
+  - En som løser problemer?
+  - Feil
+* Brodown
+  - En evig kamp mot programmering
+  - Programmeringsmiljøene våre er
+  - Hva suger med programmering egentlig.
+* Oppsett
+  - Config
+    - Setter opp alt og du tror alt er riktig
+    - Feiler ofte uten å fortelle deg hva som gikk galt
+    - Den følelsen hadde jeg og får jeg fortsatt hver gang jeg prøver å sette opp Apache som en reverse proxy
+  - Pakkehåndternig
+    - Maven, har ikke jobbet så mye med maven, mest fordi jeg ikke har klart å
+    installere det.
+    - Også har vi NPM.... som laster ned hele internett, og fungerer vært fall ikke
+    på windows.
+    - I tillegg er økosystemet så gigantisk at det er umulig å vite hvilke pakker
+    som er best og passer best inn i mitt utviklermiljø.
+* Datatyper
+  - doubles <<<<<insert details>>>>>
+  - håndtering av tid <<<<<insert details>>>>>
+* Skrive kode
+  - 80 tallet igjen as
+    - Brent Victor
+  - Selv matte
+    - Ta dette eksempelet her. Hvis du ikke skjønner hva den gjør. Skjønner du at det er en matematisk formel.
+    - Så jeg skjønner virkelig ikke hvordan det kan bli dette.
+      - Kan ikke se at dette er en formel ved første øyekast
+      - Kan ikke se at dette er en beregning
+      - Man må analysere koden steg for steg.
+  - Abstraksjon er vanskelig å få til! Elsker kort[0][12]
+  - Ikke rart vi av og til ender opp med ting som ikke fungerer helt som det skal
+    - Eller i alle fall ikke som vi trodde
+* Feilmeldinger
+  - Håper alle vet hva WAT er.
+  - Enkel kode
+  - Skikkelig åpenbar feilmelding
+  - Object reference not set to an instance of an object, wtf...
+  - Noen som så hva som gikk galt?
+  - Kunne ikke språket / platformen bare fortalt meg det?
+  - undefined of undefined heaven
+  - ArithmeticException: <<<<<insert details>>>>>
+* In prod
+  - Å produksjonsette har aldri vært bedre enn før alikevel ofte smertefult
+  - Vi lever i en verden der vi prøver å sikre oss fra å falle, men hvis vi først bommer så bommer vi hardt. Og det gjør vondt
+  - Logging er verktøyet vi bruker i dag, og det er vanskelig
+  - Ofte hjelper ikke loggingen, og vi må legge på mer logging for å løse problemet
+  - Også har vi får vi beskjed om at vi logger for mye, så vi logger mindre, også er vi tilbake til der vi startet.
+* Deploy
+  - RDP
+    - Hvordan ble RDP standarden for deploy og feilsjekk
+  - Først VPN, så RDP til en maskin jeg kan RDP inn til en annen maskin til som har RDP tilgang til prodmaskinen.
+
+* Takk for meg
