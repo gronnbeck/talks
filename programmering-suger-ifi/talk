@@ -27,8 +27,17 @@ Draft 3. Rewrite
     - I tillegg er økosystemet så gigantisk at det er umulig å vite hvilke pakker
     som er best og passer best inn i mitt utviklermiljø.
 * Datatyper
-  - doubles <<<<<insert details>>>>>
-  - håndtering av tid <<<<<insert details>>>>>
+  - doubles
+    - Hvilken verdi har val?
+    - Nærmere sagt ...
+    -
+  - håndtering av tid
+    - Tid er vanskelig
+    - Det er vanskelig fordi vi mennekser gjør ting vanskelig.
+    - F.eks. vi har disse tidssonene, kan dere se hva som er galt denne sliden?
+    - 3 CST.
+    - Central Standard Time, US, Central Standard Time, AUS, og tro det eller ei
+    Central Summer Time, AUS
 * Skrive kode
   - 80 tallet igjen as
     - Brent Victor
