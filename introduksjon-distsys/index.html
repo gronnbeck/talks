@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body class="bekk-black">
+  <textarea id="source">
+    class: front-page
+
+    # En Intro til distribuerte systemer
+
+    ## Så hva er greia med distribuerte systemer?
+
+    Ken Grønnbeck (@gronnbeck)
+
+    04.09.15
+
+    ???
+
+    * En introduksjon til distribuerte systemer
+    * stort felt, så rekker nok ikke å prate om alt
+    * jeg er ingen ekspert, men veldig interessert
+    * for de som ikke kjenner meg
+
+    ---
+
+    # Historie
+
+    Har sine røtter fra Operativsystemer med message-passing.
+
+    * Telekommunikasjon
+    * Kontrollsystemer for Luftfartøy
+    * Internett!
+
+    ???
+
+    * Kommer fra message-passing fra "feltet" Operativsystemer
+    * Brukes i mange type systemer blant annet (listet opp)
+    * Jeg kommer til å fokusere mest på Internett
+    * Kan arugmentere at Internett er et gigantisk distribuert system, synes ikke den debatten er interessant.
+
+    ---
+
+    # Forbindes med ofte med
+
+    * Distribuerte NoSQL databaser
+    * Hadoop
+
+    ???
+
+    * Jeg har intrykk av at de ofte kun forbidnes med "internet scale systemer"
+    * Da laget for enten å gjøre noe sykt fort eller lagre store mengder data
+
+    ---
+
+    # Eksempler
+
+    Noen eksempler på kjente distribuerte systemer
+    * Email, Slack, etc
+    * MMO-spill
+    * SOA:
+      * SOA v1.0
+      * SOA v2.0 (Microservices)
+
+    ---
+
+    # Kjennetegn
+
+    Deler/komponenter av systemet:
+    * Kan kjøre samtidig
+    * har ikke en felles global klokke, og
+    * feiler uavhengig av hverandre
+
+    ---
+
+    # CAP
+
+    ---
+
+    # Konsensus
+
+    ---
+
+    # Fallacies of distributed programming
+
+  </textarea>
+
+  <link href="node_modules/remark-bekk/dist/bekk.css" type="text/css" rel="stylesheet">
+  <script src="node_modules/remark-bekk/vendor/remark-0.11.0.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightStyle: 'monokai'
+    });
+  </script>
+
+</html>
