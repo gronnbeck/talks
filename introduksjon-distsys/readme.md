@@ -146,6 +146,8 @@ DevOps bevegelsen! Dev tar mer ansvar for sine egne applikasjoner. Ops sørger f
 
 Flere har bevist at det er mulig å få til en Tjenestearkitektur, men det krever endringer i organisasjon.
 
+Vi har lært at SOA ikke kommer gratis. I disse dager kaller Martin Fowler det for [Microservice Premium](http://martinfowler.com/bliki/MicroservicePremium.html)
+
 
 ## SOA v1.0 died
 
@@ -153,7 +155,7 @@ Flere har bevist at det er mulig å få til en Tjenestearkitektur, men det kreve
 [SOA is dead](http://apsblog.burtongroup.com/2009/01/soa-is-dead-long-live-services.html):
   * The acronym got in the way. People forgot what SOA stands for. They were too wrapped up in silly technology debates (e.g., “what’s the best ESB?” or “WS-* vs. REST”), and they missed the important stuff: architecture and services.
   * The small select group of organizations that has seen spectacular gains from SOA did so by treating it as an agent of transformation. In each of these success stories, SOA was just one aspect of the transformation effort. And here’s the secret to success: SOA needs to be part of something bigger.
-  
+
 [did-soa-die](http://www.kavistechnology.com/blog/did-soa-die-or-do-we-just-suck-at-architecture/):
 
   * Finally, the hype was just too much for those charged with SOA to resist. Projects selected the technology first, then the approach and architecture. That’s completely backwards.  
