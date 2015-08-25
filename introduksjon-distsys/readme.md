@@ -160,7 +160,18 @@ Vi har lært at SOA ikke kommer gratis. I disse dager kaller Martin Fowler det f
 
   * Finally, the hype was just too much for those charged with SOA to resist. Projects selected the technology first, then the approach and architecture. That’s completely backwards.  
 
+### Ikke lest, men burde kanskje
 
+  * [Top 10 reasons why people are making SOA fail]( http://www.cio.com/article/2434865/service-oriented-architecture/top-10-reasons-why-people-are-making-soa-fail.html)
+
+
+## Hva finnes?
+
+Hva finnes av distribuerte systemer:
+
+  * Prosessering
+  * Lagring
+  * etc
 
 [distributed-data-structures]: http://www.gridgain.com/developer-central/in-memory-data-fabric/in-memory-data-grid/distributed-data-structures/
 [distsys-4-fun-and-profit]: http://book.mixu.net/distsys/single-page.html
