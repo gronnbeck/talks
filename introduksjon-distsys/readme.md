@@ -144,6 +144,21 @@ Microservices: Små tjenester som snakker med hverandre aka SOA 2.0
 
 DevOps bevegelsen! Dev tar mer ansvar for sine egne applikasjoner. Ops sørger for at dev får lov til og kan klare dette  
 
+Flere har bevist at det er mulig å få til en Tjenestearkitektur, men det krever endringer i organisasjon.
+
+
+## SOA v1.0 died
+
+
+[SOA is dead](http://apsblog.burtongroup.com/2009/01/soa-is-dead-long-live-services.html):
+  * The acronym got in the way. People forgot what SOA stands for. They were too wrapped up in silly technology debates (e.g., “what’s the best ESB?” or “WS-* vs. REST”), and they missed the important stuff: architecture and services.
+  * The small select group of organizations that has seen spectacular gains from SOA did so by treating it as an agent of transformation. In each of these success stories, SOA was just one aspect of the transformation effort. And here’s the secret to success: SOA needs to be part of something bigger.
+  
+[did-soa-die](http://www.kavistechnology.com/blog/did-soa-die-or-do-we-just-suck-at-architecture/):
+
+  * Finally, the hype was just too much for those charged with SOA to resist. Projects selected the technology first, then the approach and architecture. That’s completely backwards.  
+
+
 
 [distributed-data-structures]: http://www.gridgain.com/developer-central/in-memory-data-fabric/in-memory-data-grid/distributed-data-structures/
 [distsys-4-fun-and-profit]: http://book.mixu.net/distsys/single-page.html
