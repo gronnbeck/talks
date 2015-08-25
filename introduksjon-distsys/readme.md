@@ -1,4 +1,4 @@
-# Introduksjon til distribuerte systemer
+# Introduksjon til distribuerte systemer 1
 
 ## Fallacies of distributed computing
 
@@ -14,12 +14,13 @@
 
 ## The network is reliable
 
-
 Anta at du har 2 systemer la oss kalle dem A og B. De er igjen avhengig av
 andre systemer og andre systemer er avhengig av dem. Hva slags feil kan oppstå
 hvis disse to får en nettverkspartisjon?
 
 ```
+To noder A og B
+
     A         B
     o ------- o
 
@@ -96,8 +97,53 @@ B ----a-----c--
 
 ```
 
-## Takeaway
-Takeawayen fra fordraget er at lyttere skal kjenne til forskjellige
-feilscenarioer som kan oppstå i et distribuert system. Og ved at man kjenner til
-disse feilscnarioene kan man gjøre et gjennomtenkt trade-off når man ønsker
-å unngå dem.
+## Distrbuert arkitektoniske mønstre
+
+```
+3-tier architecture:
+
+   Presentation
+       |
+     Logic
+       |
+    Storage
+
+    Frontend   <----\
+       |              App
+   Middleware  <----/
+       |
+    Database
+```
+
+### Tjenester som snakker med hverandre
+Aka SOA.
+
+Microservices: Små tjenester som snakker med hverandre aka SOA 2.0
+
+  * Synkron distribuert arkitektur
+    * n-tier arkitektur
+  * Asynkron distrbuerte arkitektur
+    * Smart bus, dumb applications
+    * Dumb bus, smart applications
+    * CQRS
+  * Distribuerte Konsepter
+    * Arbeidere
+    * Datastrukturer
+      * Køer
+      * Hasher
+      * Set
+      * [etc][distributed-data-structures]
+    * CAP ([stjålet herfra][distsys-4-fun-and-profit]):
+     * CA (consistency + availability). Examples include full strict quorum protocols, such as two-phase commit.
+     * CP (consistency + partition tolerance). Examples include majority quorum protocols in which minority partitions are unavailable such as Paxos.
+     * AP (availability + partition tolerance). Examples include protocols using conflict resolution, such as Dynamo.
+
+
+
+## Why now?
+
+DevOps bevegelsen! Dev tar mer ansvar for sine egne applikasjoner. Ops sørger for at dev får lov til og kan klare dette  
+
+
+[distributed-data-structures]: http://www.gridgain.com/developer-central/in-memory-data-fabric/in-memory-data-grid/distributed-data-structures/
+[distsys-4-fun-and-profit]: http://book.mixu.net/distsys/single-page.html
