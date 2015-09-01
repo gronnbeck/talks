@@ -26,7 +26,7 @@
 
     # Historie
 
-    Har sine røtter fra Operativsystemer med message-passing.
+    Har sine røtter fra operativsystemer med message-passing.
 
     * Telekommunikasjon
     * Kontrollsystemer for Luftfartøy
@@ -41,140 +41,23 @@
 
     ---
 
-    # Forbindes med ofte med
-
-    * Distribuerte NoSQL databaser
-    * Hadoop
-
-    ???
-
-    * Jeg har intrykk av at de ofte kun forbidnes med "internet scale systemer"
-    * Da laget for enten å gjøre noe sykt fort eller lagre store mengder data
-
-    ---
-
-    # Eksempler
-
-    Noen eksempler på kjente distribuerte systemer
-    * Email, Slack, etc
-    * MMO-spill
-    * SOA:
-      * SOA v1.0
-      * SOA v2.0 (Microservices)
-
-    ---
-
     # Kjennetegn
 
     Deler/komponenter av systemet:
     * Kan kjøre samtidig
     * har ikke en felles global klokke, og
     * feiler uavhengig av hverandre
-
     ---
 
-    # Problems
+    # Hvorfor nå?
 
-    Feil:
-    * Nettverks
-    * Node
-    * Race-conditions
-    * Synkronisering / konsistens
-
-    ---
-
-    # Time and ordering
-
-    En node i et distribuert system kan ikke vite den globale (sanne) rekkefølgen
-    på hendelser.
-
-    La A og B være 2 noder/kompoenenter av et distribuert system.
-
-    La a, b og c være hendelser
-    
-    ```
-
-    A ----b--------
-
-    B ----a-----c--
-    ```
-
-    ```
-
-    A ----b--------
-             \
-              \
-               \
-    B ----a-----c--
-
-    ```
+    ## Vi ønsker å kunne bevege oss fortere
 
     ???
 
-    Vi kan ikke bruke "tiden" som vi bruker den. Siden vi ikke kan garantere at
-    klokka på hver maskin er synkronisert.
-
-    Ved hjelp av logiske klokker kan man vite om en hendelse skjer før en annen
-    hvis og bare hvis en hendelse fører til en annen. F.eks. hvis b fører til c
-    vet vi at b må ha vært før c. Men hvilken hendelse var først av a og b?
-
-    ---
-
-    # The network is reliable
-
-    ```
-    To noder A og B
-
-        A         B
-        o ------- o
-
-
-        A         B
-        o ---x--- o
-
-    ```
-
-    ???
-
-    Anta at du har 2 systemer la oss kalle dem A og B. De er igjen avhengig av
-    andre systemer og andre systemer er avhengig av dem. Hva slags feil kan oppstå
-    hvis disse to får en nettverkspartisjon?
-
-      * Hva skjer hvis A er en applikasjon og B er en database eller en tjeneste?
-        * Skal hele applikasjonen falle ned?
-      * Hva skjer hvis A er en, ikke persisterende, bus/adapter for en applikasjon B?
-        * Går data da tapt?
-
-
-    ---
-
-    # Nettverkspartisjon vs node feil
-    ```
-    Two nodes talks through a communication link:
-        A         B
-        o ------- o
-
-    Node failure:
-
-        A         B
-        x ------- o
-
-    Network partition:
-
-        A         B
-        o ---x--- o
-    ```
-
-    ???
-
-    Det er ingen måten for node ``B`` å vite at ``A`` er oppe eller om det kun
-    er nettverket mellom dem som er nede.
-
-    Hva så? Hva er problemet? Om du skal designe et distribuert system så må du
-    sørge for at en antatt død node ikke gjør noe den ikke skal gjøre.
-    Hvis du ikke sørger for dette ender du opp med å skape ditt eget "bysantisk
-    general problem" ved at din "døde" node kan skape problemer for f.eks.
-    data-strukturen din.
+    * Smidig: Vi ønsker å kunne levere verdi til kundene våre fort
+    * Lean Startup: Få fokus på å få produktet ut å sjekke at et faktisk har verdi
+    * DevOps: DevOps bevegelsen muligjør det å produksjonsette fort
 
     ---
 
@@ -182,20 +65,87 @@
 
     ---
 
-    # Konsensus
+    # Vellykkene distribuerte systemer
+
+    * Distribuerte NoSQL databaser
+    * Distribuert prosessering (Hadoop, Storm, Spark)
+
+    ???
+
+    *
 
     ---
 
-    # Fallacies of distributed programming
+    class: center, middle
 
-      1. The network is reliable.
-      1. Latency is zero.
-      1. Bandwidth is infinite.
-      1. The network is secure.
-      1. Topology doesn't change.
-      1. There is one administrator.
-      1. Transport cost is zero.
-      1. The network is homogeneous.
+    # Hva skiller Mikrotjenester fra SOA?
+
+    ???
+
+    * Jeg har *ingen* erfaring med SOA. Så for å være helt ærlig så vet jeg ikke.
+    * Prinsippene gjelder fortsatt
+    * Men utførelsen og implementasjonen er anderledes.
+    Mer fokus på systemene i sin helhet enn tekniske implementasjoner.
+      * SOA for mye fokus på kontrakter og WS-* osv
+    * SOA:
+      * Alle skulle bruke alle deler
+      * Større systemer med mange tjenester
+    * Deling av database.. WHAT
+      * fokus på API med versjonering
+
+    ---
+
+    # Distributed transactions
+
+    ???
+
+    http://martinfowler.com/articles/microservices.html:
+    Distributed transactions are notoriously difficult to
+    implement and and as a consequence microservice
+    architectures emphasize transactionless coordination
+    between services, with explicit recognition that
+    consistency may only be eventual consistency and
+    problems are dealt with by compensating operations.
+
+    Choosing to manage inconsistencies in this way is a
+    new challenge for many development teams, but it is
+    one that often matches business practice.
+    Often businesses handle a degree of inconsistency in
+    order to respond quickly to demand, while having some
+    kind of reversal process to deal with mistakes.
+    The trade-off is worth it as long as the cost of fixing
+    mistakes is less than the cost of lost business under
+    greater consistency.
+
+    http://www.enterpriseintegrationpatterns.com/ramblings/18_starbucks.html:
+    * Starbuks does not use two-phase commit
+      * Async: Cashier taking order, barrista making the coffee
+      * Correlation problems: Drinks not FIFO
+        * Solves the problem by having name on your cup
+      * Exception handling: What if you cant pay? What if they made the wrong thing?
+        * Write-off: Do nothing. The cost of one small error is small.
+        Feks om man får en mnd gratis internett.
+        * Retry: For systems that are down, retry. Idempoteancy
+        * Compensating Action: Fix the inconsistent state at a later point.
+        E.g. ATM machine w/o connection lets you withdraw money and solves
+        the problem later.
+      * All of these strategies are different than a two-phase commit
+      that relies on separate prepare and execute steps.
+      In the Starbucks example, a two-phase commit would equate to
+      waiting at the cashier with the receipt and the money on the
+      table until the drink is finished.
+      *For example, when placing an order on Amazon the
+      short synchronous interaction assigns an order number
+      and all subsequent steps (charging credit card, packaging, shipping)
+      are done asynchronously. You are notified via e-mail (asynchronous)
+      when the additional steps complete.
+      If anything goes wrong, Amazon usually
+      compensates (refund to credit card) or retries (resend lost goods).
+
+
+
+
+    ---
 
   </textarea>
 
