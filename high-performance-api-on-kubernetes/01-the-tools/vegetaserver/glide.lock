@@ -1,0 +1,24 @@
+hash: 3441bf6ff6d443d7e65fcdfc4f1d1b67e506cee012ed3b4901bbe2aab9890aa9
+updated: 2017-05-29T17:49:23.440920937+02:00
+imports:
+- name: github.com/streadway/quantile
+  version: b0c588724d25ae13f5afb3d90efec0edc636432b
+- name: github.com/tsenart/vegeta
+  version: 9f28db162ce19bb52817af4fd9b5801b1f2772c5
+  subpackages:
+  - lib
+- name: golang.org/x/net
+  version: 5602c733f70afc6dcec6766be0d5034d4c4f14de
+  subpackages:
+  - http2
+  - http2/hpack
+  - idna
+  - lex/httplex
+- name: golang.org/x/text
+  version: f4b4367115ec2de254587813edaa901bc1c723a8
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+testImports: []
