@@ -25,3 +25,7 @@ In this section I show that the scaling issue can easily be extended without cha
 ### 5\. The One With Back-Pressure Control
 
 In this section we'll start testing the write capabilities of the API. I show how this can somehow be mitigate using a queue. But the write API needs to give less guarantees to support the scaling needs.
+
+## Notes
+
+- The performance/load bots in the toolbox was inspired by Kubernetes/contrib [scale-demo](http://blog.kubernetes.io/2015/11/one-million-requests-per-second-dependable-and-dynamic-distributed-systems-at-scale.html)
