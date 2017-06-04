@@ -25,6 +25,10 @@ func main() {
 	servers := strings.Split(serversEnv, ",")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", r.Header.Get("Origin"))
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+		w.WriteHeader(200)
+
 		if runtime == "K8S" {
 			servers = vegetaserversOnKube()
 			if len(servers) == 0 {
@@ -36,10 +40,8 @@ func main() {
 		nofServers := len(servers)
 		done := make(chan vegeta.Metrics)
 
-		parts := make([]vegeta.Metrics, 0)
-
 		for i, server := range servers {
-			go func(i int, server string, parts []vegeta.Metrics) {
+			go func(i int, server string) {
 				log.Printf("Fetching data from server: %v", server)
 				res, err := http.Get(server)
 				if err != nil {
@@ -59,15 +61,16 @@ func main() {
 				}
 
 				done <- metrics
-			}(i, server, parts)
+			}(i, server)
 		}
 
+		parts := make([]vegeta.Metrics, 0)
 		for i := 0; i < nofServers; i++ {
 			select {
 			case m := <-done:
 				parts = append(parts, m)
 				continue
-			case <-time.After(3 * time.Second):
+			case <-time.After(500 * time.Second):
 				log.Println("One of the results timed-out")
 			}
 		}
