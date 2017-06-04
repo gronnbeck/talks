@@ -1,0 +1,10 @@
+package: .
+import:
+- package: github.com/tsenart/vegeta
+  version: ~6.3.0
+  subpackages:
+  - lib
+- package: k8s.io/client-go
+  version: v2.0.0
+  subpackages:
+  - rest
