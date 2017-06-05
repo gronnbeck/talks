@@ -1,0 +1,49 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redismaster
+spec:
+  selector:
+    name: redismaster
+    app: redismaster
+    tier: db
+  ports:
+    - name: db
+      protocol: TCP
+      port: 6379
+
+---
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: redismaster
+  labels:
+      name: redismaster
+      app: redismaster
+      tier: db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: redismaster
+        app: redismaster
+        tier: db
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool
+      containers:
+        - name: redismaster
+          imagePullPolicy: Always
+          image: redis
+          resources:
+            limits:
+              cpu: 2
+              memory: 2048Mi
+            requests:
+              cpu: 1
+              memory: 500Mi
+          ports:
+            - name: db
+              containerPort: 6379
