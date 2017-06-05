@@ -1,0 +1,25 @@
+package: github.com/gronnbeck/talks/high-performance-api-on-kubernetes
+import:
+- package: github.com/codeship/go-retro
+- package: github.com/mediocregopher/radix.v2
+  subpackages:
+  - pool
+  - redis
+- package: github.com/pkg/errors
+  version: ~0.8.0
+- package: github.com/satori/go.uuid
+  version: ~1.1.0
+- package: github.com/tsenart/vegeta
+  version: ~6.3.0
+  subpackages:
+  - lib
+- package: k8s.io/apimachinery
+  subpackages:
+  - pkg/apis/meta/v1
+- package: k8s.io/client-go
+  version: ~3.0.0-beta.0
+  subpackages:
+  - kubernetes
+  - rest
+- package: github.com/emicklei/go-restful
+  version: ad3e7d5a0a11fbbead57cc9353720a60a0a2793f
