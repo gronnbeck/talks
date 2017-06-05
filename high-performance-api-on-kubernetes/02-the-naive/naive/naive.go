@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"strings"
 
+	"../domain"
+
 	"./setupredis"
 	"github.com/mediocregopher/radix.v2/pool"
 )
@@ -62,7 +64,7 @@ func get(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
 	}
 
 	if res == 0 {
-		w.Write(response{Error: &noValue}.json())
+		w.Write(domain.Response{Error: &noValue}.JSON())
 		return
 	}
 
@@ -78,7 +80,7 @@ func get(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	w.Write(response{Current: current}.json())
+	w.Write(domain.Response{Current: current}.JSON())
 }
 
 func post(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
@@ -86,7 +88,7 @@ func post(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	var req request
+	var req domain.Request
 	unmarshallErr := json.Unmarshal(byt, &req)
 	if unmarshallErr != nil {
 		panic(err)
