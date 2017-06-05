@@ -4,9 +4,16 @@ import (
 	"bytes"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 
 	"../domain"
+	"github.com/codeship/go-retro"
+	"github.com/pkg/errors"
+)
+
+var (
+	url = os.Getenv("API_URL")
 )
 
 func updater(rate time.Duration) {
@@ -16,7 +23,15 @@ func updater(rate time.Duration) {
 		}
 		byt := req.JSON()
 		buffer := bytes.NewBuffer(byt)
-		http.Post("http://localhost:8080", "application/json", buffer)
+
+		finalErr := retro.DoWithRetry(func() error {
+			_, err := http.Post(url, "application/json", buffer)
+			return err
+		})
+
+		if finalErr != nil {
+			panic(errors.Wrapf(finalErr, "Could not post to %v", url))
+		}
 
 		time.Sleep(rate)
 	}
