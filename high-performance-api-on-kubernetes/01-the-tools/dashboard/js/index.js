@@ -98,7 +98,7 @@ var optsRequests = {
     }]
 };
 
-const PUSH_MAX_VALUE = 1000;
+const PUSH_MAX_VALUE = 60;
 var push = (arr, val) => {
     arr.push(val);
     if (arr.length > PUSH_MAX_VALUE) {
