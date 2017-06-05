@@ -2,8 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"./rollingwindow"
@@ -19,11 +21,22 @@ func main() {
 		panic("Must specify TARGET_URL")
 	}
 
+	rate := uint64(1000)
+	rateEnv := os.Getenv("ATTACK_RATE")
+	if rateEnv != "" {
+		rateInt, err := strconv.Atoi(rateEnv)
+		if err != nil {
+			log.Printf("Could not convert %v to an integer. Using default value 1000", rateInt)
+		} else {
+			rate = uint64(rateInt)
+		}
+
+	}
+
 	window := rollingwindow.New(1000)
 
 	go func() {
 		for {
-			rate := uint64(1000) // per second
 			duration := 4 * time.Second
 			targeter := vegeta.NewStaticTargeter(vegeta.Target{
 				Method: "GET",
