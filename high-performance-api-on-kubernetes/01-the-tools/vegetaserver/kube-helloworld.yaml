@@ -37,6 +37,13 @@ spec:
         - name: vegetaserver
           imagePullPolicy: Always
           image: gronnbeck/vegetaserver
+          resources:
+            limits:
+              cpu: 2
+              memory: 1024Mi
+            requests:
+              cpu: 1
+              memory: 500Mi
           env:
           - name: TARGET_URL
             value: http://helloworldserver.default.svc.cluster.local:8080

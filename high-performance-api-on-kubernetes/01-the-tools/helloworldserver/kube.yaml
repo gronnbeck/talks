@@ -37,6 +37,13 @@ spec:
         - name: helloworldserver
           imagePullPolicy: Always
           image: gronnbeck/helloworldserver
+          resources:
+            limits:
+              cpu: 4
+              memory: 1024Mi
+            requests:
+              cpu: 1
+              memory: 500Mi
           ports:
             - name: api
               containerPort: 8080
