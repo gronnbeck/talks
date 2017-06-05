@@ -29,3 +29,11 @@ In this section we'll start testing the write capabilities of the API. I show ho
 ## Notes
 
 - The performance/load bots in the toolbox was inspired by Kubernetes/contrib [scale-demo](http://blog.kubernetes.io/2015/11/one-million-requests-per-second-dependable-and-dynamic-distributed-systems-at-scale.html)
+
+- Use `k top pod/node` to check CPU performance
+
+- labels for different apps:
+
+  - naive: `-l app=naive`
+  - vegataserver: `-l app=vegetaserver`
+  - aggregator : `-l app=aggregator`
