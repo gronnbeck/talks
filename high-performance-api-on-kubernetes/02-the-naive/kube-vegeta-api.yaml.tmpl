@@ -46,7 +46,7 @@ spec:
               memory: 500Mi
           env:
           - name: TARGET_URL
-            value: http://naive.default.svc.cluster.local:8080
+            value: http://redis-api.default.svc.cluster.local:8080
           - name: ATTACK_RATE
             value: "$ATTACK_RATE"
           ports:
