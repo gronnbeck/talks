@@ -1,8 +1,9 @@
 
 var responseTimesAvg = []
 var responseTime99 = []
+var requestsPerSec = []
 
-var opts = {
+var optsResponseTimes = {
     chart: {
         type: 'area'
     },
@@ -13,17 +14,17 @@ var opts = {
         allowDecimals: false,
         labels: {
             formatter: function () {
-                return this.value; // clean, unformatted number for year
+                return this.value;
             }
         }
     },
     yAxis: {
         title: {
-            text: 'Response times'
+            text: 'millis'
         },
         labels: {
             formatter: function () {
-                return this.value / 1000 + 'k';
+                return this.value;
             }
         }
     },
@@ -54,7 +55,64 @@ var opts = {
   ]
 };
 
-var chart = Highcharts.chart('container', opts);
+var optsRequests = {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'Requests per second'
+    },
+    xAxis: {
+        allowDecimals: false,
+        labels: {
+            formatter: function () {
+                return this.value;
+            }
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Requests'
+        },
+        labels: {
+            formatter: function () {
+                return this.value;
+            }
+        }
+    },
+    plotOptions: {
+        area: {
+            pointStart: 0,
+            marker: {
+                enabled: false,
+                symbol: 'circle',
+                radius: 2,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+    },
+    series: [
+      {
+         name: 'request per second',
+         data: []
+     },
+  ]
+};
+
+const PUSH_MAX_VALUE = 1000
+var push = (arr, val) => {
+  arr.push(val)
+  if (arr.length > PUSH_MAX_VALUE) {
+    arr.shift()
+  }
+}
+
+var chart = Highcharts.chart('container', optsResponseTimes);
+var chartRequests = Highcharts.chart('request-container', optsRequests);
 
 var fetchAndUpdate = () => {
   superagent.get("http://localhost:8089").end((err,res) => {
@@ -64,15 +122,22 @@ var fetchAndUpdate = () => {
                    .reduce((acc, cur) => acc+cur,0) / body.length;
    var lat99th = body.map((m) => m.latencies["99th"] / (1000 * 1000))
                   .reduce((acc, cur) => acc+cur,0) / body.length;
-    responseTimesAvg.push(mean)
-    responseTime99.push(lat99th)
+
+    push(responseTimesAvg, mean)
+    push(responseTime99, lat99th)
 
     chart.options.series[0].data = responseTime99
     chart.options.series[1].data = responseTimesAvg
 
 
+    var rate = body.map((m) => m.rate).reduce((acc, cur) => acc+cur, 0);
+    push(requestsPerSec, rate)
+    chartRequests.options.series[0].data = requestsPerSec
+
+
     window.requestAnimationFrame(() => {
       chart.update(chart.options, true)
+      chartRequests.update(chartRequests.options, true)
       console.log("Should update")
     })
 
