@@ -4,9 +4,6 @@ set -e
 
 _name="vegetaserver"
 
-echo "Download Go assets"
-glide -q install
-
 #SHA=$(git rev-parse --short HEAD)
 #All builds live in production
 CONTAINER_TAG="gronnbeck/$_name"

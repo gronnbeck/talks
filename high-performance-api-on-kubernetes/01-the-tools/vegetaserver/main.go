@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"./rollingwindow"
+	"github.com/gronnbeck/talks/high-performance-api-on-kubernetes/01-the-tools/vegetaserver/rollingwindow"
 
 	"github.com/pkg/errors"
 	vegeta "github.com/tsenart/vegeta/lib"
