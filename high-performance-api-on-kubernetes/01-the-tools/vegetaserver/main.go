@@ -51,7 +51,7 @@ func main() {
 	}()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		byt, err := json.Marshal(window.Snapshot())
+		byt, err := json.Marshal(window.Snapshot(time.After(200 * time.Millisecond)))
 		if err != nil {
 			panic(errors.Wrap(err, "Could not marshal window in handlefunc '/'"))
 		}

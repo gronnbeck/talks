@@ -54,7 +54,7 @@ func (r *Metrics) Add(result *vegeta.Result) {
 }
 
 // Snapshot returns a clsoed vegeta snapshot
-func (r Metrics) Snapshot() vegeta.Metrics {
+func (r Metrics) Snapshot(timeout <-chan time.Time) vegeta.Metrics {
 	o := make(chan vegeta.Metrics)
 	r.cmd <- cmd{
 		Type:        typeSnapshot,
@@ -63,7 +63,7 @@ func (r Metrics) Snapshot() vegeta.Metrics {
 	select {
 	case metrics := <-o:
 		return metrics
-	case <-time.After(10 * time.Second):
+	case <-timeout:
 		panic("Snapshot of RollingWindowMetrics failed")
 	}
 
