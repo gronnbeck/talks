@@ -30,6 +30,9 @@ func vegetaserversOnKube() []string {
 	var servers = make([]string, 0)
 
 	for _, pod := range pods.Items {
+		if pod.Status.PodIP == "" {
+			continue
+		}
 		servers = append(servers, fmt.Sprintf("http://%v:8081/", pod.Status.PodIP))
 	}
 
