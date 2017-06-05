@@ -33,7 +33,7 @@ func main() {
 
 	}
 
-	window := rollingwindow.New(1000)
+	window := rollingwindow.New(60)
 
 	go func() {
 		for {

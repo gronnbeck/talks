@@ -65,13 +65,17 @@ func main() {
 		}
 
 		parts := make([]vegeta.Metrics, 0)
+
+		timeout := time.After(1 * time.Second)
 		for i := 0; i < nofServers; i++ {
 			select {
 			case m := <-done:
 				parts = append(parts, m)
 				continue
-			case <-time.After(500 * time.Second):
+			case <-time.After(200 * time.Millisecond):
 				log.Println("One of the results timed-out")
+			case <-timeout:
+				break
 			}
 		}
 
