@@ -37,3 +37,5 @@ In this section we'll start testing the write capabilities of the API. I show ho
   - naive: `-l app=naive`
   - vegataserver: `-l app=vegetaserver`
   - aggregator : `-l app=aggregator`
+
+- issues with DNS resolving inside of redis behind NATs (see [this under "Configuring replication in Docker and NAT"](https://redis.io/topics/replication) )
