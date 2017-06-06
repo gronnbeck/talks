@@ -27,4 +27,4 @@ spec:
               memory: 250Mi
           env:
           - name: API_URL
-            value: http://naive.default.svc.cluster.local:8080
+            value: http://redis-api.default.svc.cluster.local:8080
