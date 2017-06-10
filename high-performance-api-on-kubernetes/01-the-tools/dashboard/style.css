@@ -1,0 +1,11 @@
+.responses {
+  display: flex;
+}
+
+.chartcontainer {
+  flex-grow: 1;
+}
+
+.chartcontainer--responseTimes {
+  flex-grow: 3;
+}
