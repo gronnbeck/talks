@@ -9,3 +9,7 @@
 .chartcontainer--responseTimes {
   flex-grow: 3;
 }
+
+.chartcontainer--requests {
+  flex-grow: 3;
+}
