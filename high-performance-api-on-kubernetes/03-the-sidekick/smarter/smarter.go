@@ -1,16 +1,19 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"flag"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gronnbeck/talks/high-performance-api-on-kubernetes/02-the-naive/domain"
 	"github.com/gronnbeck/talks/high-performance-api-on-kubernetes/02-the-naive/naive/setupredis"
 	"github.com/mediocregopher/radix.v2/pool"
+	"github.com/pkg/errors"
 )
 
 var (
@@ -20,7 +23,7 @@ var (
 	writeRedisAddr = flag.String("write-redis-addr", "localhost:6379", "tcp addr to connect redis tor")
 	writeRedisPass = flag.String("write-redis-pass", "", "password to redis server")
 
-	noValue = "No value added yet"
+	noValue = errors.New("No value added yet")
 )
 
 func init() {
@@ -63,37 +66,73 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
-func get(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
+type response struct {
+	err  error
+	resp domain.Response
+}
+
+func fetchFromRedis(redis *pool.Pool) (*domain.Response, error) {
 	hasCmd := redis.Cmd("HEXISTS", "currency", "current-value")
 
 	if hasCmd.Err != nil {
-		panic(hasCmd.Err)
+		return nil, errors.Wrap(hasCmd.Err, "Has command failed")
 	}
 
 	res, err := hasCmd.Int()
 
 	if err != nil {
-		panic(err)
+		return nil, errors.Wrap(err, "Could not convert int/bool to int")
 	}
 
 	if res == 0 {
-		w.Write(domain.Response{Error: &noValue}.JSON())
-		return
+		return nil, noValue
 	}
 
 	redisResp := redis.Cmd("HGET", "currency", "current-value")
 
 	if redisResp.Err != nil {
-		panic(err)
+		return nil, errors.Wrap(redisResp.Err, "Could not fetch current-value")
 	}
 
 	current, err := redisResp.Float64()
 
 	if err != nil {
-		panic(err)
+		return nil, errors.Wrap(err, "Could not convert to current-value Float64")
 	}
 
-	w.Write(domain.Response{Current: current}.JSON())
+	return &domain.Response{Current: current}, nil
+}
+
+func get(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(context.Background(), 400*time.Millisecond)
+	defer cancel()
+	_ = ctx
+
+	returnChan := make(chan response)
+	go func() {
+		resp, err := fetchFromRedis(redis)
+		if err != nil {
+			returnChan <- response{err: err}
+		} else {
+			returnChan <- response{resp: *resp}
+		}
+	}()
+
+	select {
+	case res := <-returnChan:
+		if res.err != nil {
+			errorStr := res.err.Error()
+			w.Write(domain.Response{Error: &errorStr}.JSON())
+			return
+		}
+		w.Write(res.resp.JSON())
+	case <-ctx.Done():
+		if ctx.Err() == context.DeadlineExceeded {
+			errStr := context.DeadlineExceeded.Error()
+			w.WriteHeader(408)
+			w.Write(domain.Response{Error: &errStr}.JSON())
+		}
+	}
 }
 
 func post(redis *pool.Pool, w http.ResponseWriter, r *http.Request) {
