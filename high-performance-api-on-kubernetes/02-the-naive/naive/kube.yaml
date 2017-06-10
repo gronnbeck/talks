@@ -46,7 +46,12 @@ spec:
               memory: 500Mi
           env:
           - name: REDIS_ADDR
-            value: redismaster.default.svc.cluster.local:6379
+            value: 127.0.0.1:7007
+          - name: REDIS_PASS
+            valueFrom:
+              secretKeyRef:
+                name: redis-api-simple
+                key: redis-pass
           ports:
             - name: api
               containerPort: 8080
@@ -54,5 +59,37 @@ spec:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 20
+            initialDelaySeconds: 5
             timeoutSeconds: 2
+        - name: ssl-tunnel
+          imagePullPolicy: Always
+          image: gronnbeck/compose-ssl-tunnel
+          volumeMounts:
+            - name: ssl-tunnel-priv-key
+              mountPath: /var/redis-ssl-tunnel
+              readOnly: true
+          env:
+            - name: REDIS_SSL_TUNNEL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: compose-ssl-tunnel
+                  key: host
+            - name: REDIS_SSL_TUNNEL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: compose-ssl-tunnel
+                  key: port
+            - name: REDIS_SSL_TUNNEL_DST_IP
+              valueFrom:
+                secretKeyRef:
+                  name: compose-ssl-tunnel
+                  key: dst_ip
+            - name: REDIS_SSL_TUNNEL_SRC_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: compose-ssl-tunnel
+                  key: src_port
+      volumes:
+        - name: ssl-tunnel-priv-key
+          secret:
+            secretName: ssl-tunnel-priv-key
